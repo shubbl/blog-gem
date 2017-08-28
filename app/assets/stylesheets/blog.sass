@@ -1,0 +1,199 @@
+.blog-container
+  @extend .container
+  margin-top: 30px
+
+.blog
+  .blog-item
+    h2
+      margin-top: 0
+    .tag
+      margin-top: 5px
+    .avatar
+      margin-top: 5px
+.widget .date
+  width: 80px
+.blog-content
+  h3
+    margin-top: 20px
+    margin-bottom: 10px
+.blog-news
+  .created
+    font-size: 18px
+    color: $brand-primary
+
+.well-blog
+  background: none
+  min-height: 20px
+  padding: 19px
+  margin-bottom: 20px
+  border: 1px solid #e3e3e3
+  border-radius: 4px
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05)
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05)
+
+.blog-meta-margin
+  margin-right: 5px
+  margin-left: 5px
+
+.blog-page-title
+  margin-top: 20px
+  font-size: 44px
+
+.blog-page-text
+  margin-bottom: 44px
+
+.author-img
+  margin-top: 5px
+
+.widget
+  margin-bottom: 30px
+  >h3
+    font-size: 16px
+    margin-top: 0
+  h5
+    margin-top: 10px
+  .date
+    margin-top: 5px
+    padding: 10px 8px
+    background: $brand-primary
+    >span
+      display: block
+      text-align: center
+      font-family: sans-serif
+      color: #fff
+      &.month
+        font-size: 13px
+        line-height: 13px
+        font-weight: 700
+        text-transform: uppercase
+      &.day
+        margin-top: 5px
+        font-size: 18px
+        line-height: 18px
+        font-weight: 700
+.btn-lg-group
+  .btn.btn-large
+    height: 50px
+    width: 25%
+    border-top-left-radius: 0px
+    border-bottom-left-radius: 0px
+    margin: 0px
+  input.input-block-level
+    border-right-width: 0px
+    width: 75%
+    height: 50px
+
+.btn
+  margin-right: 5px
+  margin-bottom: 5px
+
+ul li
+  font-size: 15px
+
+ul
+  &.arrow,
+  &.arrow-double,
+  &.tick,
+  &.cross,
+  &.star,
+  &.rss
+    list-style: none
+    padding: 0
+    margin: 0
+    li::before,
+    li::after
+      font-family: FontAwesome
+      font-size: 16px
+.widget
+  ul
+    &.arrow,
+    &.arrow-double,
+    &.tick,
+    &.cross,
+    &.star,
+    &.rss
+      li::before
+        margin-right: 5px
+    &.arrow
+      li::before
+        content: "\f105"
+    &.arrow-double
+      li::before
+        content: "\f101"
+    &.tick
+      li::before
+        content: "\f00c"
+    &.cross
+      li::before
+        content: "\f00d"
+    &.star
+      li::before
+        content: "\f006"
+    &.rss
+      li::before
+        content: "\f09e"
+
+
+$facebook: #4f7dd4
+$twitter: #5bceff
+$linkedin: #21a6d8
+$google: #dc422b
+$instagram: #4d423c
+$phone: #00bf8f
+$homepage: $brand-primary
+$github: #4f7dd4
+$youtube: #bb0000
+$mobile: #4dc247
+$xing: #CFDC00
+
+.btn-social
+  margin: 5px
+  border: 0
+  color: #fff
+  text-shadow: 0 1px rgba(0, 0, 0, 0.5)
+  &.btn-facebook
+    background: $facebook
+    &:hover
+      background: lighten($facebook, 10%)
+  &.btn-twitter
+    background: $twitter
+    &:hover
+      background: lighten($twitter, 10%)
+  &.btn-linkedin
+    background: $linkedin
+    &:hover
+      background: lighten($linkedin, 10%)
+  &.btn-google-plus
+    background: $google
+    &:hover
+      background: lighten($google, 10%)
+  &.btn-instagram
+    background: $instagram
+    &:hover
+      background: lighten($instagram, 10%)
+  &.btn-phone
+    background: $phone
+    &:hover
+      background: lighten($phone, 10%)
+  &.btn-homepage
+    background: $homepage
+    &:hover
+      background: lighten($homepage, 10%)
+  &.btn-github
+    background: $github
+    &:hover
+      background: lighten($github, 10%)
+  &.btn-youtube
+    background: $youtube
+    &:hover
+      background: lighten($youtube, 10%)
+  &.btn-mobile
+    background: $mobile
+    &:hover
+      background: lighten($mobile, 10%)
+  &.btn-xing
+    background: $xing
+    &:hover
+      background: lighten($xing, 10%)
+  &:hover
+    color: #fff

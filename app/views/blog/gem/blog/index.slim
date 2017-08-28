@@ -1,0 +1,50 @@
+.blog-container
+  - if Blog::Gem.title_enable
+    h1.blog-page-title = link_to @page_title, blogs_path
+    .text-muted.blog-page-text = t("blog.index.text")
+  - if current_author.present?
+    .well-blog
+      h3 Author Actions
+      .btn-group
+        a.btn.btn-primary href="#{Blog::Gem.path}/posts/new" New Blog-Post
+      .btn-group
+        a.btn.btn-primary href="#{Blog::Gem.path}/authors/me/edit" Edit my Author Profile
+      - if current_author.admin?
+        .btn-toolbar
+          a.btn.btn-primary href="#{Blog::Gem.path}/authors" Authors Index
+      br
+      br
+      h4 Unpublished articles
+      table class="table table-bordered"
+        tr
+          th name
+          th published date
+          th
+        - Blog::Gem::Post.unpublished.each do |post|
+          tr
+            td
+              = link_to post.title, post.to_path
+            td
+              = l(post.published_at)
+            td
+              = link_to 'edit', edit_post_path(post), class: "btn btn-primary btn-block"
+  .row
+    .col-sm-8
+      .blog
+        - if @author.present?
+          = render "author", author: @author
+        - if @posts.present?
+          - @posts.each do |post|
+            .blog-item.well-blog
+              = render "item", post: post
+              p = raw post.teaser
+              = link_to "#{t("blog.read_more")} #{icon("angle-right")}".html_safe, post.to_path, class: "btn btn-link"
+          .gap
+          = will_paginate @posts
+        - else
+          h2 = t("blog.not_found.heading")
+          h5 = t("blog.not_found.lead")
+          - if false
+            .center
+              = link_to t("blog.your_story.button"), your_story_path, class: "btn btn-primary"
+    = render "sidebar"

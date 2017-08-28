@@ -1,0 +1,37 @@
+section#author-index.container
+  .page-header
+    = link_to new_author_path, class: 'btn btn-primary pull-right' do
+      span.glyphicon.glyphicon-plus
+      |  New Author
+    h1
+      | Listing Authors
+
+  .table-responsive
+    table.table.table-striped.table-bordered.table-hover
+      thead
+        tr
+          th
+            #
+          th
+            | Name
+          th
+            | Private email
+          th
+            | Public email
+          th
+          th
+      tbody
+        - @authors.each do | author |
+          tr
+            td
+              = author.id
+            td
+              = author.name
+            td
+              = author.private_email
+            td
+              = author.public_email
+            td
+              = link_to 'Edit', edit_author_path(author)
+            td
+              = link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' }

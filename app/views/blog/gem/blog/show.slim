@@ -1,0 +1,54 @@
+- content_for :meta do
+  meta name="news_keywords" content=@post.tag_list.map{|x| x.humanize}.join(", ")
+  meta property="og:type" content="article"
+.blog-container
+  - if Blog::Gem.title_enable
+    h1.blog-page-title = link_to t("blog.index.page_title"), blogs_path
+    .text-muted.blog-page-text = t("blog.index.text")
+
+  - if current_author.present? && (current_author == @post.author || current_author.admin? )
+    .well-blog
+      h3 Author Actions
+      .btn-group
+        = link_to 'Edit this Blog-Post', edit_post_path(@post), class: "btn btn-primary"
+      .btn-group
+        = link_to 'Destroy this Blog-Post', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary"
+      br
+      button.btn.btn-social.btn-facebook data-target="#fb-modal" data-toggle="modal" type="button"
+        | Text 4 Facebook
+      #fb-modal.modal.fade role="dialog" tabindex="-1"
+        .modal-dialog role="document"
+          .modal-content
+            .modal-header
+              button.close aria-label="Close" data-dismiss="modal" type="button"
+                span aria-hidden="true"  &times;
+              h4#myModalLabel.modal-title Text 4 Facebook
+            .modal-body
+              = @post.title
+              br
+              br
+              = "► #{@post.to_url}"
+              br
+              br
+              = raw facebook_html(@post.body)
+              br
+              br
+              = @post.tag_list.map{|x| "##{x.humanize}"}.join(", ")
+      br
+      = link_to "original thumbnail", @post.thumbnail.url(:original), target: "_blank"
+  .row
+    .col-sm-8
+      .blog
+        .blog-item.well-blog
+          = render "item", post: @post
+          .blog-content
+            = raw @post.body
+          .well-blog.row style="margin-left: 0px; margin-top: 25px"
+            h4 = t("blog.keywords")
+            .tag-cloud.unstyled
+              - @post.tag_list.each do |tag|
+                = link_to tag.humanize, blog_tag_path(tag.downcase), class: "btn btn-xs btn-primary"
+          - if @post.show_author
+            p
+              = render "author", author: @post.author
+    = render "sidebar"

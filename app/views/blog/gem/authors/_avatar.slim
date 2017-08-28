@@ -1,0 +1,21 @@
+= f.input :avatar_or_gravatar, collection: [["Gravatar", "gravatar"], ["Avatar", "avatar"]]
+
+.row
+  .col-sm-6
+    h3 Avatar Upload
+    = f.input :avatar
+    - if @author.avatar.present?
+      = image_tag @author.avatar.url, width: "200"
+  .col-sm-6
+    h3 Gravatar
+    .row.form-group
+      .col-sm-3
+        = f.label :gravatar, "Gravatar E-mail"
+      .col-sm-9
+        strong
+          = @author.private_email
+    .row.form-group
+      .col-sm-3
+       = f.label :gravatar_url, "Gravatar Vorschau"
+      .col-sm-9
+        = image_tag @author.gravatar_url, width: "200"

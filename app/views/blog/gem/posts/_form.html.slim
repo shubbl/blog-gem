@@ -1,0 +1,15 @@
+= simple_form_for @post do |f|
+  = f.input :title
+  = f.input :body, input_html: {rows: 20}
+  = f.input :teaser, input_html: {rows: 5}
+  = f.input :tag_list, input_html: {value: @post.tag_list.join(", ")}
+  = f.input :published_at
+  = f.input :category_id, collection: Blog::Gem.categories.each_with_index.map{ |c, i| [c.humanize, i] }
+  = f.input :show_author
+  = f.input :thumbnail
+  - if @post.thumbnail.present?
+    = image_tag @post.thumbnail.url, width: "200"
+  - if current_author.admin?
+    = f.input :author_id, collection: Blog::Gem::Author.all.map{ |a| [a.name, a.id] }
+  = f.input :path
+  = f.submit class: "btn btn-primary btn-lg btn-block pull-right", style: "width: 400px"

@@ -1,0 +1,9 @@
+= f.input :name
+.row
+  .col-sm-6
+    = f.input :private_email, hint: "Use for #{link_to " Gravatar ", "https://gravatar.com/", target: "_blank"}".html_safe
+    = f.input :public_email, hint: "Show on Page and use for authentication"
+  .col-sm-6
+    = f.input :password
+    = f.input :password_confirmation
+= f.input :description, input_html: {rows: 5}

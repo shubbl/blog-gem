@@ -1,0 +1,12 @@
+.user-info.media.box
+  .pull-left = link_to image_tag(author.image, class: "img-thumbnail", width: 180), author.to_path
+  .media-body
+    h4.author-img = link_to author.name, author.to_path
+    p = raw author.description
+    .author-meta
+      - [:homepage, :facebook, :twitter, :xing, :instagram, :github, :google_plus, :linkedin, :youtube, :phone, :mobile].each do |x|
+          - name = author.send(x)
+          - if name.present?
+            = link_to (t("social.#{x}.url")+name), target: "_blank", title: t("social.#{x}.name"), class: "btn btn-social btn-#{x}"
+              = icon("#{t("social.#{x}.icon")} fa-fw")
+

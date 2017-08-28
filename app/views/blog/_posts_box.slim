@@ -1,0 +1,15 @@
+.gap
+.row
+  - Blog::Gem::Post.published.first(Blog::Gem.home_posts_count).each do |post|
+    .col-sm-3
+      .row.box.well
+        p
+          = link_to image_tag(post.thumbnail.url(:medium), class: "img-responsive"), post.to_path
+        h5 = link_to post.title, post.to_path
+        p.teaser =  raw post.teaser.split(" ").first(30).join(" ")
+        = link_to "#{t("blog.read_more")} #{icon("angle-right")}".html_safe, post.to_path, class: "btn btn-primary pull-right"
+- if Blog::Gem::Post.published.count > Blog::Gem.home_posts_count
+  .row
+    .col-lg-12
+      .text-center
+        = link_to "#{t("blog.all_posts")} #{icon("angle-right")}".html_safe, "post.to_path", class: "btn btn-primary btn-lg"

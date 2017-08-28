@@ -1,0 +1,15 @@
+h2 = link_to post.title, post.to_path
+- if post.published_at > Time.now
+  .alert
+    h4 Warning!
+    h5 = "This post will published at #{l(post.published_at)}"
+.blog-meta.clearfix
+  p.pull-left
+    - if post.show_author
+      span.blog-meta-margin
+        = raw "#{icon('user')} #{t("blog.by")} #{link_to post.author.name, post.author.to_path}  "
+    span.blog-meta-margin
+      = raw "#{icon('folder')} #{t("blog.category_label")}: #{link_to post.category[:name].html_safe, post.category[:link]}  "
+    span.blog-meta-margin
+      = raw "#{icon('calendar')} #{l(post.published_at)}"
+= link_to image_tag(post.thumbnail.url(:medium), class: "img-responsive img-thumbnail thumbnail"), post.to_path

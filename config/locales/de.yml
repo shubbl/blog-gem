@@ -1,0 +1,75 @@
+de:
+  blog:
+    archives:
+      show_tags: "Mehr Schlagwörter anzeigen"
+      hidden_tags: "Weniger Schlagwörter anzeigen"
+      more: "Mehr Anzeigen"
+    not_found:
+      heading: "Es wurden leider keine Artikel gefunden."
+      lead: "Wir haben hier leider noch keine Blog Artikel."
+    all_posts: "Weitere Blog Artikel anzeigen"
+    category_label: "Kategorie"
+    search_by: "gesuchte nach:"
+    tagged_with: "mit dem Schlagwort:"
+    categoryed_with: "aus der Kategorie:"
+    by_author: "geschrieben von:"
+    from_month: "aus dem: "
+    by: "von"
+    search:
+      placeholder: "Artikel Suche"
+      button: "Los"
+    archive: "Archiv"
+    tags: "Schlagwörter"
+    last_posts: "Letzten Artikel"
+    read_more: "Weiter lesen"
+    categories: "Kategorien"
+    no_category: "Keine Kategorie"
+    keywords: "Schlagwörter: "
+    index:
+      page_title: "Blog - aktuelle Themen & Nachrichten"
+      text: "Lese alles zu den Themen und Nachrichten die uns bewegen."
+  social:
+    homepage:
+      name: "Homepage"
+      icon: "globe"
+      url: ""
+    facebook:
+      name: "Facebook"
+      icon: "facebook"
+      url: "https://www.facebook.com/"
+    twitter:
+      name: "Twitter"
+      icon: "twitter"
+      url: "https://twitter.com/"
+    xing:
+      name: "Xing"
+      icon: "xing"
+      url: "https://www.xing.com/profile/"
+    instagram:
+      name: Instagram
+      icon: "instagram"
+      url: "https://www.instagram.com/"
+    github:
+      name: "Github"
+      icon: "github"
+      url: "https://github.com/"
+    google_plus:
+      name: "Google+"
+      icon: "google-plus"
+      url: "https://plus.google.com/u/"
+    linkedin:
+      name: "LinkedIn"
+      icon:  "linkedin"
+      url: "https://de.linkedin.com/in/"
+    youtube:
+      name: "YouTube"
+      icon: "youtube"
+      url: "https://www.youtube.com/"
+    phone:
+      name: "Telefone"
+      icon: "phone"
+      url: "tel:"
+    mobile:
+      name: "Mobil"
+      icon: "mobile"
+      url: "tel:"

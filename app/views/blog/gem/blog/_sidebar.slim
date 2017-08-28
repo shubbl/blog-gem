@@ -1,0 +1,54 @@
+- @all_posts = @all_posts||Blog::Gem::Post.published
+aside.col-sm-4.well
+  .widget.search
+    form action=blogs_path
+      .input-group.btn-lg-group
+        input.form-control.input-block-level placeholder=t("blog.search.placeholder") value=params[:q] name="q" type="text"
+        button.btn.btn-large.btn-primary type="submit" = t("blog.search.button")
+  .widget.widget-popular
+    h3 = t("blog.last_posts")
+    .widget-blog-items
+      - @all_posts.first(Blog::Gem.widget_posts_count).each do |post|
+        .widget-blog-item.media
+          .pull-left
+            = link_to post.to_path, title: l(post.published_at)
+              .date
+                span.month = l(post.published_at, format: :month)
+                span.day = post.published_at.day
+          .media-body
+            = link_to post.to_path
+              h5 = post.title
+      - if @all_posts.count > Blog::Gem.widget_posts_count
+        .pull-right
+          = link_to t("blog.all_posts"), blogs_path
+  .widget
+    h3 = t("blog.categories")
+    div
+      .row
+        .col-sm-6
+          ul.arrow
+            - Blog::Gem.categories.each_with_index.select{|x, i| i.even? }.each do |category, i|
+              li = link_to category.first.to_s.humanize, blog_category_path(category.first.to_s)
+        .col-sm-6
+          ul.arrow
+            - Blog::Gem.categories.each_with_index.select{|x, i| !i.even? }.each do |category, i|
+              li = link_to category.first.to_s.humanize, blog_category_path(category.first.to_s)
+  .widget
+    h3 = t("blog.tags")
+    - @blog_tags = @blog_tags||Blog::Gem::Post.tag_counts_on(:tags)
+    .blog-gem-taglist-first
+      - @blog_tags.first(Blog::Gem.tags_count).each do |tag|
+        a.btn.btn-xs.btn-primary href=blog_tag_path(tag.to_s.downcase) = tag.to_s.humanize
+    - if @blog_tags.count > Blog::Gem.tags_count
+      .blog-gem-taglist-all.hidden
+        - @blog_tags.each do |tag|
+          a.btn.btn-xs.btn-primary href=blog_tag_path(tag.to_s.downcase) = tag.to_s.humanize
+      = button_tag t("blog.archives.show_tags"), class: "btn btn-xs btn-link pull-right", id: "blog-archive-trigger", data: {hidden: t("blog.archives.hidden_tags"), show: t("blog.archives.show_tags"), current: "hidden"}
+  .widget
+    h3 = t("blog.archive")
+    ul.arrow
+      - @posts_month = @posts_month||@all_posts.group_by{|post| post.published_at.beginning_of_month}
+      - @posts_month.first(Blog::Gem.archive_count).each do |date, c|
+        li = link_to "#{I18n.l(date, format: :month)} #{date.year}", "#{Blog::Gem.path}/archive/#{date.month}-#{date.year}"
+      - if @posts_month.count > Blog::Gem.archive_count
+        li = link_to t("bottom.archive.more"), blogs_path

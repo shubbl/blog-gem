@@ -1,0 +1,17 @@
+= simple_form_for @author do |f|
+  ul.nav.nav-tabs
+    li.active
+      a data-toggle="tab" href="#user"  User Settings
+    li
+      a data-toggle="tab" href="#contact"  Contact
+    li
+      a data-toggle="tab" href="#image"  Avatar
+  .tab-content
+    br
+    #user.tab-pane.fade.active.in
+      = render "user", f: f
+    #contact.tab-pane.fade
+      = render "contact", f: f
+    #image.tab-pane.fade
+      = render "avatar", f: f
+  = f.submit class: "btn btn-primary btn-lg pull-right"

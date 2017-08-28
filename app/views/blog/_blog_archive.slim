@@ -1,0 +1,7 @@
+.widget
+  ul.archive.arrow
+    - @posts_month = @posts_month||Blog::Gem::Post.published.group_by{|post| post.published_at.beginning_of_month}
+    - @posts_month.first(Blog::Gem.archive_count).each do |date, c|
+      li = link_to "#{I18n.l(date, format: :month)} #{date.year}", "/blog/archive/#{date.month}-#{date.year}"
+    - if @posts_month.count > Blog::Gem.archive_count
+      li = link_to t("bog.archive.more"), blogs_path
