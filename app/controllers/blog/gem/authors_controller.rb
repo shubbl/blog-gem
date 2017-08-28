@@ -1,8 +1,11 @@
 class Blog::Gem::AuthorsController < Blog::Gem::ApplicationController
+
+  before_action do |controller|
+    disable_breadcrumb if defined?(disable_breadcrumb)
+  end
   before_action :login_as_author, except: [:login, :login_submit]
   before_action :admin, only: [:index, :new, :create, :destroy]
   before_action :set_author, only: [:edit, :update, :destroy]
-  before_action :disable_breadcrumb if defined?(disable_breadcrumb)
 
   def login_submit
     @page_title = "Author Login"

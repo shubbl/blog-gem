@@ -90,7 +90,7 @@ Blog::Gem.setup do |config|
   config.path = "/blog"
   config.image_path = "/uploads"
   config.title_enable = true
-
+  config.per_page = 5
 end
 ```
 

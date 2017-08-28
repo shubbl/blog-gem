@@ -1,7 +1,10 @@
 class Blog::Gem::PostsController < Blog::Gem::ApplicationController
   before_action :login_as_author
   before_action :set_post, only: [:edit, :update, :destroy]
-  before_action :disable_breadcrumb if defined?(disable_breadcrumb)
+
+  before_action do |controller|
+    disable_breadcrumb if defined?(disable_breadcrumb)
+  end
 
   def new
     @post = Blog::Gem::Post.new(author_id: current_author.id, show_author: true)
