@@ -86,7 +86,7 @@ Blog::Gem.setup do |config|
   config.archive_count = 13
   config.home_posts_count = 6
   config.tags_count = 24
-  config.widget_posts_count = 6
+  config.widget_posts_count = 8
   config.path = "/blog"
   config.image_path = "/uploads"
   config.title_enable = true

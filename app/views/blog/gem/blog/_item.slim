@@ -1,6 +1,6 @@
 h2 = link_to post.title, post.to_path
 - if post.published_at > Time.now
-  .alert
+  .alert.alert-warning
     h4 Warning!
     h5 = "This post will published at #{l(post.published_at)}"
 .blog-meta.clearfix

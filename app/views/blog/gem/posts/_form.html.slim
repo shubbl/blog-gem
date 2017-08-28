@@ -4,7 +4,7 @@
   = f.input :teaser, input_html: {rows: 5}
   = f.input :tag_list, input_html: {value: @post.tag_list.join(", ")}
   = f.input :published_at
-  = f.input :category_id, collection: Blog::Gem.categories.each_with_index.map{ |c, i| [c.humanize, i] }
+  = f.input :category_id, collection: Blog::Gem.categories.map{ |name, id| [name.humanize, id] }
   = f.input :show_author
   = f.input :thumbnail
   - if @post.thumbnail.present?
