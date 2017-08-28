@@ -43,7 +43,7 @@ rake db:migrate
 ```
 @import blog
 ```
-###Into your application.js
+### Into your application.js
 ```
 //= require blog
 ```
