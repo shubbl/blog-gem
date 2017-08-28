@@ -23,7 +23,7 @@ $ gem install blog-gem
 ## Setup
 
 
-###Install the migration to create the data table:
+### Install the migration to create the data table:
 
 For Acts as taggable on
 ```bash
@@ -34,12 +34,12 @@ rake blog_gem:install:migrations
 rake db:migrate
 ```
 
-###Into your routes.rb
+### Into your routes.rb
 ```ruby
   mount Blog::Gem::Engine => "/blog", :as => :blogs
 ```
 
-###Into your style.sass
+### Into your style.sass
 ```
 @import blog
 ```
@@ -47,7 +47,7 @@ rake db:migrate
 ```
 //= require blog
 ```
-###Into rails c
+### Into rails c
 ```ruby
 Blog::Gem::Author.create_admin(name: "", password: "", email: "")
 ```
@@ -67,7 +67,7 @@ Blog::Gem::Author.create_admin(name: "", password: "", email: "")
 
 ## Config
 
-##Create config/initializers/blog.rb, yout can modify:
+## Create config/initializers/blog.rb, yout can modify:
 
 ```ruby
 Blog::Gem.setup do |config|
