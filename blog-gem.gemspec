@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency "gravtastic"
   s.add_dependency 'bcrypt', '~> 3.1.7'
   s.add_dependency 'will_paginate'
+  s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'simple_form'
   s.add_dependency 'pg_search'
   s.add_dependency 'nokogiri'

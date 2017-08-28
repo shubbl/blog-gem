@@ -39,7 +39,8 @@ class Blog::Gem::BlogController < Blog::Gem::ApplicationController
         render json: @posts.map{|x| {title: x.title, teaser: x.teaser, url: x.url, tags: x.tags, category: x.category, author: x.author_name, thumbnail: x.thumbnail.url(:medium)}}
       end
       format.html do
-        @posts = posts.published.paginate(:page => params[:page], :per_page => 30)
+        @current_path = blogs_path
+        @posts = posts.published.paginate(page: params[:page], per_page: Blog::Gem.per_page)
       end
     end
   end

@@ -40,7 +40,7 @@
               p = raw post.teaser
               = link_to "#{t("blog.read_more")} #{icon("angle-right")}".html_safe, post.to_path, class: "btn btn-link"
           .gap
-          = will_paginate @posts
+          = will_paginate @posts, renderer: BootstrapPagination::Rails
         - else
           h2 = t("blog.not_found.heading")
           h5 = t("blog.not_found.lead")
