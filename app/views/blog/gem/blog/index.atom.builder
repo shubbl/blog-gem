@@ -1,4 +1,4 @@
-atom_feed(language: 'de', url: root_url) do |feed|
+atom_feed(language: 'de', url: Blog::Gem.url) do |feed|
   feed.title t("blog.index.page_title")
   feed.updated @posts.maximum(:published_at)
 
