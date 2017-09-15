@@ -25,6 +25,10 @@ class Blog::Gem::Post < Blog::Gem::ApplicationRecord
     end
   end
 
+  def image_url
+    "#{Blog::Gem.url}#{thumbnail.url(:medium)}"
+  end
+
   def to_path
     "#{Blog::Gem.path}/#{url}"
   end

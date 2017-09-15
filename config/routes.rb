@@ -2,6 +2,8 @@ Blog::Gem::Engine.routes.draw do
 
   get "/" => "blog#index", as: :blogs
   get "/feed.atom" => "blog#index", as: :blog_feed
+  get "/api.json" => "blog#index", as: :blog_api_index
+  get "/api/:id.json" => "blog#api", as: :blog_api_show
 
   get "/tag/:tag" => "blog#index", as: :blog_tag
   get "/category/:category" => "blog#index", as: :blog_category
