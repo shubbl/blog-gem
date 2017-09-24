@@ -35,7 +35,7 @@ class Blog::Gem::BlogController < Blog::Gem::ApplicationController
         render layout: false
       end
       format.json do
-        @posts = posts.published.all
+        @posts = posts.published.limit(params[:limit]||Blog::Gem.per_page).offset(params[:offset]||0)
         render json: @posts.map{|x| {id: x.id, title: x.title, teaser: x.teaser, url: x.url, tags: x.tags, category: x.category, author: x.author_name, thumbnail: x.image_url, published_at: x.published_at}}
       end
       format.html do
