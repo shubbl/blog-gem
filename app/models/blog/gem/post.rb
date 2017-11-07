@@ -5,7 +5,7 @@ class Blog::Gem::Post < Blog::Gem::ApplicationRecord
 
   acts_as_taggable
 
-  has_attached_file :thumbnail, styles: { medium: "750x300#"}, path: ":rails_root/public#{Blog::Gem.image_path}/posts/:id/:style.:extension", url: "#{Blog::Gem.image_path}/posts/:id/:style.:extension"
+  has_attached_file :thumbnail, styles: { medium: "750x300#", square: "80x80#"}, path: ":rails_root/public#{Blog::Gem.image_path}/posts/:id/:style.:extension", url: "#{Blog::Gem.image_path}/posts/:id/:style.:extension"
   validates_attachment_content_type :thumbnail, content_type: /\Aimage\/.*\Z/
 
   acts_as_url :title
@@ -25,8 +25,8 @@ class Blog::Gem::Post < Blog::Gem::ApplicationRecord
     end
   end
 
-  def image_url
-    "#{Blog::Gem.url}#{thumbnail.url(:medium)}"
+  def image_url(type=:medium)
+    "#{Blog::Gem.url}#{thumbnail.url(type)}"
   end
 
   def to_path

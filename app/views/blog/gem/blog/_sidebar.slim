@@ -11,13 +11,15 @@ aside.col-sm-4.well
       - @all_posts.first(Blog::Gem.widget_posts_count).each do |post|
         .widget-blog-item.media
           .pull-left
-            = link_to post.to_path, title: l(post.published_at)
-              .date
-                span.month = l(post.published_at, format: :month)
-                span.day = post.published_at.day
+            = link_to post.to_path
+              = image_tag(post.thumbnail.url(:square), class: "img-responsive img-thumbnail")
           .media-body
             = link_to post.to_path
               h5 = post.title
+            p
+              = raw "#{icon('calendar')} #{l(post.published_at)}"
+              br
+              = raw "#{icon('folder')} #{t("blog.category_label")}: #{link_to post.category[:name].html_safe, post.category[:link]}"
       - if @all_posts.count > Blog::Gem.widget_posts_count
         .pull-right
           = link_to t("blog.all_posts"), blogs_path

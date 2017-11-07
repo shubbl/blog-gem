@@ -36,7 +36,7 @@ class Blog::Gem::BlogController < Blog::Gem::ApplicationController
       end
       format.json do
         @posts = posts.published.limit(params[:limit]||Blog::Gem.per_page).offset(params[:offset]||0)
-        render json: @posts.map{|x| {id: x.id, title: x.title, teaser: x.teaser, url: x.url, tags: x.tags, category: x.category, author: x.author_name, thumbnail: x.image_url, published_at: x.published_at}}
+        render json: @posts.map{|x| {id: x.id, title: x.title, teaser: x.teaser, url: x.to_url, tags: x.tags, category: x.category, author: x.author_name, thumbnail: x.image_url, published_at: x.published_at, square: x.image_url(:square)}}
       end
       format.html do
         @current_path = blogs_path
@@ -62,7 +62,7 @@ class Blog::Gem::BlogController < Blog::Gem::ApplicationController
   def api
     @post = Blog::Gem::Post.find_by_id(params[:id])
     if @post.present? && @post.published_at <= Time.now
-      render json: {status: 200, id: @post.id, title: @post.title, teaser: @post.teaser, url: @post.url, tags: @post.tags, category: @post.category, author: @post.author_name, thumbnail: @post.image_url, body: @post.body, published_at: @post.published_at}
+      render json: {status: 200, id: @post.id, title: @post.title, teaser: @post.teaser, url: @post.to_url, tags: @post.tags, category: @post.category, author: @post.author_name, thumbnail: @post.image_url, square: @post.image_url(:square), body: @post.body, published_at: @post.published_at}
     else
       render json: {status: 404}
     end
