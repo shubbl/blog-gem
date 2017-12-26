@@ -9,7 +9,7 @@ atom_feed(language: 'de', url: Blog::Gem.url) do |feed|
       entry.author do |author|
         author.name post.author.name
       end
-      entry.url post_url(post)
+      entry.url post.to_path
       entry.summary post.teaser, type: 'html'
     end
   end
