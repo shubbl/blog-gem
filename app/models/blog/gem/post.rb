@@ -20,7 +20,7 @@ class Blog::Gem::Post < Blog::Gem::ApplicationRecord
   scope :unpublished, -> { where("published_at > ?", Time.now).order('published_at desc') }
 
   def author_name
-    if author.present?
+    if author.present? && show_author
       author.name
     end
   end
