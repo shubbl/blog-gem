@@ -40,7 +40,7 @@ class Blog::Gem::BlogController < Blog::Gem::ApplicationController
       end
       format.html do
         @current_path = blogs_path
-        @posts = posts.published.paginate(page: params[:page], per_page: Blog::Gem.per_page)
+        @posts = posts.published.paginate(page: params[:page].gsub("/", ""), per_page: Blog::Gem.per_page)
       end
     end
   end
